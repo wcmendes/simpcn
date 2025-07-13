@@ -6,6 +6,9 @@ O WM SimPCN é um simulador educacional que permite aos alunos simular eventos c
 
 **Subtítulo:** Teste seus planos. Salve seus dados. Aprenda com seus erros.
 
+👉 **[Acesse agora o simulador online](https://wcmendes.github.io/simpcn/)**  
+(*Hospedado gratuitamente via GitHub Pages*)
+
 ## 🔧 Funcionalidades Implementadas
 
 ### 1. Cadastro de Ativos Críticos
