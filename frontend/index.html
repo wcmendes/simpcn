@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WM SimPCN - Simulador de Continuidade de Negócios</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <h1>WM SimPCN</h1>
+            </div>
+            <p class="subtitle">Simulador de Continuidade de Negócios</p>
+            <p class="tagline">Teste seus planos. Salve seus dados. Aprenda com seus erros.</p>
+        </header>
+
+        <!-- Tela 1: Cadastro de Ativos Críticos -->
+        <section id="cadastro-ativos" class="screen active">
+            <div class="screen-header">
+                <h2><i class="fas fa-database"></i> Cadastro de Ativos Críticos</h2>
+                <p>Configure os sistemas críticos da sua organização</p>
+            </div>
+            
+            <div class="ativos-container">
+                <div class="ativo-card">
+                    <h3>Sistema ERP</h3>
+                    <div class="form-group">
+                        <label>Criticidade:</label>
+                        <select id="erp-criticidade">
+                            <option value="Alta">Alta</option>
+                            <option value="Média">Média</option>
+                            <option value="Baixa">Baixa</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Frequência de Backup:</label>
+                        <select id="erp-backup">
+                            <option value="em tempo real">Em tempo real</option>
+                            <option value="diário">Diário</option>
+                            <option value="semanal">Semanal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>RTO Ideal (horas):</label>
+                        <input type="number" id="erp-rto" value="2" min="0.5" step="0.5">
+                    </div>
+                    <div class="form-group">
+                        <label>RPO Ideal (minutos):</label>
+                        <input type="number" id="erp-rpo" value="60" min="15" step="15">
+                    </div>
+                </div>
+
+                <div class="ativo-card">
+                    <h3>E-mail Corporativo</h3>
+                    <div class="form-group">
+                        <label>Criticidade:</label>
+                        <select id="email-criticidade">
+                            <option value="Alta">Alta</option>
+                            <option value="Média" selected>Média</option>
+                            <option value="Baixa">Baixa</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Frequência de Backup:</label>
+                        <select id="email-backup">
+                            <option value="em tempo real" selected>Em tempo real</option>
+                            <option value="diário">Diário</option>
+                            <option value="semanal">Semanal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>RTO Ideal (horas):</label>
+                        <input type="number" id="email-rto" value="4" min="0.5" step="0.5">
+                    </div>
+                    <div class="form-group">
+                        <label>RPO Ideal (minutos):</label>
+                        <input type="number" id="email-rpo" value="15" min="15" step="15">
+                    </div>
+                </div>
+
+                <div class="ativo-card">
+                    <h3>Banco de Dados</h3>
+                    <div class="form-group">
+                        <label>Criticidade:</label>
+                        <select id="bd-criticidade">
+                            <option value="Alta" selected>Alta</option>
+                            <option value="Média">Média</option>
+                            <option value="Baixa">Baixa</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Frequência de Backup:</label>
+                        <select id="bd-backup">
+                            <option value="em tempo real">Em tempo real</option>
+                            <option value="diário" selected>Diário</option>
+                            <option value="semanal">Semanal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>RTO Ideal (horas):</label>
+                        <input type="number" id="bd-rto" value="1" min="0.5" step="0.5">
+                    </div>
+                    <div class="form-group">
+                        <label>RPO Ideal (minutos):</label>
+                        <input type="number" id="bd-rpo" value="30" min="15" step="15">
+                    </div>
+                </div>
+
+                <div class="ativo-card">
+                    <h3>Portal Institucional</h3>
+                    <div class="form-group">
+                        <label>Criticidade:</label>
+                        <select id="portal-criticidade">
+                            <option value="Alta">Alta</option>
+                            <option value="Média" selected>Média</option>
+                            <option value="Baixa">Baixa</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Frequência de Backup:</label>
+                        <select id="portal-backup">
+                            <option value="em tempo real">Em tempo real</option>
+                            <option value="diário" selected>Diário</option>
+                            <option value="semanal">Semanal</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>RTO Ideal (horas):</label>
+                        <input type="number" id="portal-rto" value="6" min="0.5" step="0.5">
+                    </div>
+                    <div class="form-group">
+                        <label>RPO Ideal (minutos):</label>
+                        <input type="number" id="portal-rpo" value="120" min="15" step="15">
+                    </div>
+                </div>
+            </div>
+
+            <div class="screen-actions">
+                <button class="btn btn-primary" onclick="iniciarSimulacao()">
+                    <i class="fas fa-play"></i> Iniciar Simulação
+                </button>
+            </div>
+        </section>
+
+        <!-- Tela 2: Cenário de Incidente -->
+        <section id="cenario-incidente" class="screen">
+            <div class="screen-header">
+                <h2><i class="fas fa-exclamation-triangle"></i> Cenário de Incidente</h2>
+                <p>Um evento crítico acaba de ocorrer em sua organização</p>
+            </div>
+            
+            <div class="incident-alert">
+                <div class="alert-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="alert-content">
+                    <h3 id="incident-type">Ataque de Ransomware</h3>
+                    <p id="incident-description">
+                        Sua organização foi vítima de um ataque de ransomware. 
+                        Vários sistemas críticos foram criptografados e estão indisponíveis.
+                    </p>
+                </div>
+            </div>
+
+            <div class="impact-summary">
+                <h3>Impacto Inicial</h3>
+                <div class="impact-grid">
+                    <div class="impact-item">
+                        <i class="fas fa-server"></i>
+                        <span>Sistemas Afetados</span>
+                        <div id="sistemas-afetados" class="impact-value">ERP, E-mail</div>
+                    </div>
+                    <div class="impact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Tempo Offline</span>
+                        <div id="tempo-offline" class="impact-value">6 horas</div>
+                    </div>
+                    <div class="impact-item">
+                        <i class="fas fa-database"></i>
+                        <span>Perda de Dados</span>
+                        <div id="perda-dados" class="impact-value">4 horas</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="screen-actions">
+                <button class="btn btn-secondary" onclick="voltarCadastro()">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+                <button class="btn btn-primary" onclick="tomarDecisao()">
+                    <i class="fas fa-forward"></i> Tomar Decisão
+                </button>
+            </div>
+        </section>
+
+        <!-- Tela 3: Decisão do Aluno -->
+        <section id="decisao-aluno" class="screen">
+            <div class="screen-header">
+                <h2><i class="fas fa-user-cog"></i> Sua Decisão</h2>
+                <p>Defina sua estratégia de recuperação</p>
+            </div>
+
+            <div class="timer-container">
+                <div class="timer">
+                    <i class="fas fa-stopwatch"></i>
+                    <span id="timer-display">05:00</span>
+                </div>
+                <p>Tempo para tomar decisão</p>
+            </div>
+
+            <div class="decision-form">
+                <div class="form-group">
+                    <label>Sistema a recuperar primeiro:</label>
+                    <select id="sistema-prioridade">
+                        <option value="">Selecione...</option>
+                        <option value="ERP">Sistema ERP</option>
+                        <option value="E-mail">E-mail Corporativo</option>
+                        <option value="Banco de Dados">Banco de Dados</option>
+                        <option value="Portal">Portal Institucional</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>RTO Estimado (horas):</label>
+                    <input type="number" id="rto-estimado" min="0.5" step="0.5" placeholder="Ex: 2.5">
+                    <small>Tempo máximo aceitável para recuperação</small>
+                </div>
+
+                <div class="form-group">
+                    <label>RPO Estimado (minutos):</label>
+                    <input type="number" id="rpo-estimado" min="15" step="15" placeholder="Ex: 60">
+                    <small>Perda máxima de dados aceitável</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Justificativa da decisão:</label>
+                    <textarea id="justificativa" rows="3" placeholder="Explique o motivo da sua escolha..."></textarea>
+                </div>
+            </div>
+
+            <div class="screen-actions">
+                <button class="btn btn-secondary" onclick="voltarCenario()">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+                <button class="btn btn-primary" onclick="avaliarDecisao()">
+                    <i class="fas fa-check"></i> Confirmar Decisão
+                </button>
+            </div>
+        </section>
+
+        <!-- Tela 4: Resultado e Feedback -->
+        <section id="resultado-feedback" class="screen">
+            <div class="screen-header">
+                <h2><i class="fas fa-chart-line"></i> Resultado da Simulação</h2>
+                <p>Avaliação da sua estratégia de recuperação</p>
+            </div>
+
+            <div class="result-badge">
+                <div id="selo-resultado" class="badge success">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Plano Eficaz</span>
+                </div>
+            </div>
+
+            <div class="result-summary">
+                <div class="result-grid">
+                    <div class="result-item">
+                        <h4>RTO</h4>
+                        <div id="rto-resultado" class="result-status success">
+                            <i class="fas fa-check"></i>
+                            <span>Dentro do limite</span>
+                        </div>
+                        <small id="rto-detalhes">2h estimado vs 2h ideal</small>
+                    </div>
+                    <div class="result-item">
+                        <h4>RPO</h4>
+                        <div id="rpo-resultado" class="result-status success">
+                            <i class="fas fa-check"></i>
+                            <span>Dentro do limite</span>
+                        </div>
+                        <small id="rpo-detalhes">60min estimado vs 60min ideal</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="impact-details">
+                <h3>Impacto da Decisão</h3>
+                <div class="impact-list">
+                    <div class="impact-detail">
+                        <i class="fas fa-envelope"></i>
+                        <span>E-mails perdidos: <strong id="emails-perdidos">4 horas</strong></span>
+                    </div>
+                    <div class="impact-detail">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>Custo estimado: <strong id="custo-estimado">R$ 15.000</strong></span>
+                    </div>
+                    <div class="impact-detail">
+                        <i class="fas fa-users"></i>
+                        <span>Usuários afetados: <strong id="usuarios-afetados">250</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lessons-learned">
+                <h3>Lições Aprendidas</h3>
+                <div id="licoes-container">
+                    <div class="lesson">
+                        <i class="fas fa-lightbulb"></i>
+                        <p>Priorizar sistemas críticos com base na criticidade do negócio é fundamental para uma recuperação eficaz.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="screen-actions">
+                <button class="btn btn-secondary" onclick="novaSimulacao()">
+                    <i class="fas fa-redo"></i> Nova Simulação
+                </button>
+                <button class="btn btn-primary" onclick="exportarRelatorio()">
+                    <i class="fas fa-download"></i> Exportar Relatório
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
+

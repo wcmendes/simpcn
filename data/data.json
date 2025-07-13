@@ -1,0 +1,10 @@
+{
+  "ativos": [
+    { "nome": "ERP", "criticidade": "Alta", "backup": "diário", "RTO_ideal": "2h", "RPO_ideal": "1h" },
+    { "nome": "e-mail", "criticidade": "Média", "backup": "em tempo real", "RTO_ideal": "4h", "RPO_ideal": "15min" }
+  ],
+  "cenarios": [
+    { "tipo": "ransomware", "impacto": ["ERP", "e-mail"], "tempo_total": "6h", "dados_perdidos": "4h" }
+  ]
+}
+
