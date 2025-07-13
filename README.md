@@ -70,7 +70,7 @@ O WM SimPCN é um simulador educacional que permite aos alunos simular eventos c
 
 ```
 simPCN/
-├── frontend/
+├── docs/
 │   ├── index.html          # Página principal com todas as telas
 │   ├── css/
 │   │   └── styles.css      # Estilos completos da aplicação
