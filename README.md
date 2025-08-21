@@ -202,7 +202,7 @@ Este projeto foi desenvolvido para fins educacionais como parte do simulador de 
 
 ## 👥 Créditos
 
-Desenvolvido por William Corrêa Mendes, com auxílio de inteligência artifical, para auxiliar no ensino dos alunos do Curso de Análise e Desenvolvimento de Sistemas, de conceitos de continuidade de negócios e recuperação de desastres.
+Desenvolvido por William Corrêa Mendes, com auxílio de inteligência artifical, para reforçar conceitos de continuidade de negócios e recuperação de desastres.
 
 ---
 
